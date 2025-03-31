@@ -29,7 +29,7 @@ module tt_um_example (
     
  
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, uio_in[7:0], 1'b0};
+  wire _unused = &{uio_in[7:0], 1'b0};
     
     bit_position_to_value b_pos(
         .bit_in(ui_in),
