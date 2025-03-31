@@ -19,6 +19,7 @@ module tt_um_example (
   assign uo_out = ui_in;
   assign uio_out[0] = clk;
   assign uio_out[7:1] = 7'b0;
+  assign uio_oe = 8'hff;
     
   // Direct inputs
   // wire loopback = ui_in[0];
