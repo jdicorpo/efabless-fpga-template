@@ -37,7 +37,7 @@ module tt_um_example (
   // assign uio_out = biport;
   // assign uio_oe = bidir;
   always @(posedge clk) begin
-    if (~rst_n) begin
+    if (rst_n) begin
       out <= 0;
     end else begin
       out <= ~out;
