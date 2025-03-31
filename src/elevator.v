@@ -17,8 +17,12 @@ module tt_um_example (
 );
 
 // All output pins must be assigned. If not used, assign to 0.
-  assign uio_out = 0;
-  assign uio_oe  = 0;
+  // assign uio_out = 0;
+  // assign uio_oe  = 0;
+
+  assign uio_out[0] = clk;
+  assign uio_out[7:1] = 7'b0;
+  assign uio_oe = 8'hff;
  
   wire [3:0] floor;
   wire [3:0] requested_floor;
