@@ -16,10 +16,14 @@ module tt_um_example (
     input  wire       rst_n     // reset_n - low to reset
 );
 
+  reg out;
+
   assign uo_out = ui_in;
   assign uio_out[0] = clk;
-  assign uio_out[7:1] = 7'b0;
+  assign uio_out[1] = out;
+  assign uio_out[7:2] = 7'b0;
   assign uio_oe = 8'hff;
+
     
   // Direct inputs
   // wire loopback = ui_in[0];
@@ -31,7 +35,13 @@ module tt_um_example (
   // assign uo_out = outport;
   // assign uio_out = biport;
   // assign uio_oe = bidir;
-  // always @(posedge clk) begin
+  always @(posedge clk or negedge rst_n) begin
+    if (~rst_n) begin
+      out <= 0;
+    end else begin
+      out <= ~out;
+    end
+  end
   //   if (~rst_n) begin
   //     counter <= 0;
   //     outport <= 0;
