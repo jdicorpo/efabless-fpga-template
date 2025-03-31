@@ -17,19 +17,16 @@ module tt_um_example (
 );
 
 // All output pins must be assigned. If not used, assign to 0.
-  // assign uio_out = 0;
-  // assign uio_oe  = 0;
+  assign uio_out = 0;
+  assign uio_oe  = 0;
 
-  assign uio_out[0] = clk;
-  assign uio_out[7:1] = 7'b0;
-  assign uio_oe = 8'hff;
- 
+
   wire [3:0] floor;
   wire [3:0] requested_floor;
     
  
   // List all unused inputs to prevent warnings
-  wire _unused = &{uio_in[7:0], 1'b0};
+  wire _unused = &{ena, uio_in[7:0], 1'b0};
     
     bit_position_to_value b_pos(
         .bit_in(ui_in),
@@ -100,7 +97,7 @@ module elevator_state_machine (
   end
   
     // Sequential logic 
-        always @(posedge clk or negedge rst_n) begin
+        always @(posedge clk or posedge rst_n) begin
             if ( rst_n ) begin
               current_state <= IDLE_STATE;
               current_floor <= 0;
