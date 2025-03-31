@@ -21,7 +21,8 @@ module tt_um_example (
   assign uo_out = ui_in;
   assign uio_out[0] = clk;
   assign uio_out[1] = out;
-  assign uio_out[7:2] = 7'b0;
+  assign uio_out[2] = rst_n;
+  assign uio_out[7:3] = 7'b0;
   assign uio_oe = 8'hff;
 
     
@@ -35,7 +36,7 @@ module tt_um_example (
   // assign uo_out = outport;
   // assign uio_out = biport;
   // assign uio_oe = bidir;
-  always @(posedge clk or negedge rst_n) begin
+  always @(posedge clk) begin
     if (~rst_n) begin
       out <= 0;
     end else begin
