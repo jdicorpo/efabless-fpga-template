@@ -97,7 +97,7 @@ module elevator_state_machine (
   end
   
     // Sequential logic 
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if ( ~rst_n ) begin
               current_state <= IDLE_STATE;
               current_floor <= 0;
