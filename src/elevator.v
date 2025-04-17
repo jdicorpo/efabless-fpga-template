@@ -151,15 +151,24 @@ module bit_position_to_value (
 
     always @(*) begin
         case(bit_in)
-            8'b00000000: bit_out = 0;
-            8'b00000001: bit_out = 1;
-            8'b00000010: bit_out = 2;
-            8'b00000100: bit_out = 3;
-            8'b00001000: bit_out = 4;
-            8'b00010000: bit_out = 5;
-            8'b00100000: bit_out = 6;
-            8'b01000000: bit_out = 7;
-            8'b10000000: bit_out = 8;
+            8'b11111111: bit_out = 0;
+            8'b11111110: bit_out = 1;
+            8'b11111101: bit_out = 2;
+            8'b11111011: bit_out = 3;
+            8'b11110111: bit_out = 4;
+            8'b11101111: bit_out = 5;
+            8'b11011111: bit_out = 6;
+            8'b10111111: bit_out = 7;
+            8'b01111111: bit_out = 8;
+            // 8'b00000000: bit_out = 0;
+            // 8'b00000001: bit_out = 1;
+            // 8'b00000010: bit_out = 2;
+            // 8'b00000100: bit_out = 3;
+            // 8'b00001000: bit_out = 4;
+            // 8'b00010000: bit_out = 5;
+            // 8'b00100000: bit_out = 6;
+            // 8'b01000000: bit_out = 7;
+            // 8'b10000000: bit_out = 8;
          default:
             bit_out = 0;
          endcase              
